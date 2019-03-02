@@ -37,7 +37,7 @@ let dropZones = document.querySelectorAll(".drop-zone");
 	//
 	function initDrag() {
 		piecesBoard.querySelectorAll('img').forEach(img => {
-			img.addEventListener("dradstart", function(e) {
+			img.addEventListener("dragstart", function(e) {
 				console.log('draggin...');
 				e.dataTransfer.setData("text/plain", this.id);
 			});
