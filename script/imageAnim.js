@@ -75,6 +75,12 @@ function resetPuzzlePieces()
 		//change the current puzzle, regenerate the pieces
 		// 
 		//clean out the puzzle piecesdiv
+
+		//fresh board for new puzzle picture
+		dropZones.forEach(zone =>  {
+			zone.innerHTML = "";
+		});
+		
 		piecesBoard.innerHTML = "";
 		// generate new pieces
 		createPuzzlePieces(this.dataset.puzzleref);
