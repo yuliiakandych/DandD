@@ -26,6 +26,8 @@ let dropZones = document.querySelectorAll(".drop-zone");
 			let newPuzzlePiece = `<img id ="piece${index}" class="puzzle-image"
 			src="images/${piece + pictureIndex}.jpg" alt="puzzle piece" draggable>`;
 
+
+
 			piecesBoard.innerHTML += newPuzzlePiece;
 		});
 
@@ -50,6 +52,7 @@ let dropZones = document.querySelectorAll(".drop-zone");
 dropZones.forEach(zone => {
 	zone.addEventListener("dragover", function(e) {
 		e.preventDefault();
+
 		console.log("dragged over me!");
 
 	});
@@ -57,7 +60,10 @@ dropZones.forEach(zone => {
 	zone.addEventListener("drop", function(e) {
 		e.preventDefault();
 		console.log("you dropped something on me");
-
+		// solve the problem with pazzle piece at the same location
+		if (zone.innerHTML !== "") { 
+			return; 
+		};
 		let piece = e.dataTransfer.getData("text/plain");
 		e.target.appendChild(document.querySelector(`#${piece}`));
 	});
@@ -68,7 +74,7 @@ function resetPuzzlePieces()
 	{
 		//change the current puzzle, regenerate the pieces
 		// 
-		// clean out the puzzle piecesdiv
+		//clean out the puzzle piecesdiv
 		piecesBoard.innerHTML = "";
 		// generate new pieces
 		createPuzzlePieces(this.dataset.puzzleref);
